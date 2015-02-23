@@ -1,4 +1,12 @@
 GeoTimeZone
+
+Copyright (c) 2015 Blake Smith
+https://github.com/bfsmith/GeoTimeZone
+
+Ported to Java from .Net
+
+.Net version
+------------
 Copyright (c) 2014 Matt Johnson & Simon Bartlett
 https://github.com/mj1856/GeoTimeZone
 
