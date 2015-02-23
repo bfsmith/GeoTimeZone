@@ -15,8 +15,8 @@ public class TZTest {
     long losAngelesTime = convertToLocalTime(utcTime,  34.0, -118.0);
     Date dallasDate = new Date(dallasTime);
     Date losAngelesDate = new Date(losAngelesTime);
-    System.out.println("Dallas time: " + dallasDate);
-    System.out.println("Los Angeles time: " + losAngelesDate);
+    System.out.println("Dallas time: " + dallasDate + " - " + dallasTime);
+    System.out.println("Los Angeles time: " + losAngelesDate + " - " + losAngelesTime);
   }
 
   public static long convertToLocalTime(long utcDate, double latitude, double longitude) {

@@ -3,21 +3,12 @@ package com.github.bfsmith.geotimezone;
 import com.spatial4j.core.io.GeohashUtils;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.*;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TimeZoneLookup {
   private static final TimezoneFileReader tzFile = new TimezoneFileReader();
-
-  public Date convertToLocalTime(Date utcDate, double latitude, double longitude) {
-    TimeZoneResult timeZoneResult = getTimeZone(latitude, longitude);
-    TimeZone timeZone = TimeZone.getTimeZone(timeZoneResult.getResult());
-    int offset = timeZone.getOffset(utcDate.getTime());
-    Calendar calendar = Calendar.getInstance(timeZone);
-    calendar.setTime(utcDate);
-    return utcDate;
-  }
 
   public TimeZoneResult getTimeZone(double latitude, double longitude)
   {
@@ -125,15 +116,16 @@ public class TimeZoneLookup {
     return 0;
   }
 
-  private List<String> lookupData;
+  private static List<String> lookupData;
   private List<String> getLookupData()
   {
     if(lookupData == null) {
       try {
         lookupData = new ArrayList<>();
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("TZL.dat").getFile());
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+          classLoader.getResourceAsStream("TZL.dat")));
         String line;
         while ((line = bufferedReader.readLine()) != null) {
           lookupData.add(line);
