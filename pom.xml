@@ -9,6 +9,10 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <name>Geo Time Zone for Java</name>
+    <description>This library translates latitude and longitude coordinates into timezones.</description>
+    <url>https://github.com/bfsmith/GeoTimeZone</url>
+
     <licenses>
         <license>
             <name>MIT</name>
@@ -41,6 +45,12 @@
         </dependency>
     </dependencies>
 
+    <scm>
+        <connection>scm:git:git@github.com:bfsmith/GeoTimeZone.git</connection>
+        <developerConnection>scm:git:git@github.com:bfsmith/GeoTimeZone.git</developerConnection>
+        <url>git@github.com:bfsmith/GeoTimeZone</url>
+    </scm>
+
     <build>
         <plugins>
             <plugin>
@@ -51,6 +61,30 @@
                     <source>1.7</source>
                     <target>1.7</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
