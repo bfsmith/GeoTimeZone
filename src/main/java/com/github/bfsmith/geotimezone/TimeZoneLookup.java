@@ -30,7 +30,7 @@ public class TimeZoneLookup {
   private List<Integer> getTzDataLineNumbers(String geohash)
   {
     int seeked = SeekTimeZoneFile(geohash);
-    if (seeked == 0)
+    if (seeked <= 0)
       return new ArrayList<>();
 
     int min = seeked, max = seeked;
@@ -66,11 +66,11 @@ public class TimeZoneLookup {
 
   private int SeekTimeZoneFile(String hash)
   {
-    int min = 1;
+    int min = 0;
     int max = tzFile.getCount();
     boolean converged = false;
 
-    while (true)
+    while (!converged)
     {
       int mid = ((max - min) / 2) + min;
       String midLine = tzFile.getLine(mid);
@@ -107,13 +107,10 @@ public class TimeZoneLookup {
 
       if (min == max)
       {
-        if (converged)
-          break;
-
         converged = true;
       }
     }
-    return 0;
+    return -1;
   }
 
   private static List<String> lookupData;
@@ -159,7 +156,6 @@ public class TimeZoneLookup {
     double offset = posNo / 15;
     if (posNo % 15 > 0)
       offset++;
-
 
     return dir * (int)Math.floor(offset);
   }

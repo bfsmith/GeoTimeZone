@@ -8,6 +8,11 @@ import java.util.Date;
 
 public class TZTest {
   public static void main(String[] args) {
+
+    long l = convertToLocalTime(1425048883, 85.30477553739976, 158.767371559411);
+
+    System.out.println(l);
+
     long utcTime = 1424719299;
     // Human time (GMT): Mon, 23 Feb 2015 19:21:39 GMT
     // Human time (your time zone): 2/23/2015, 1:21:39 PM
