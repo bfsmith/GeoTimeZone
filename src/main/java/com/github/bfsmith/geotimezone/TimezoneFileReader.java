@@ -8,7 +8,7 @@ import java.util.List;
 public class TimezoneFileReader {
   private List<String> tzData;
 
-  private List<String> getTzData()
+  private synchronized List<String> getTzData()
   {
     if(tzData == null) {
       try {
