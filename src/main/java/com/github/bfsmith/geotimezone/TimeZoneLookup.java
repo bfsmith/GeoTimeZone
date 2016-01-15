@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TimeZoneLookup {
-  private final TimezoneFileReader tzFile = new TimezoneFileReader();
+  private static final TimezoneFileReader tzFile = new TimezoneFileReader();
 
   public TimeZoneResult getTimeZone(double latitude, double longitude)
   {
